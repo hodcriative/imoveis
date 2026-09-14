@@ -1,18 +1,51 @@
-# Site do Cléverson — GitHub Pages
+# Publicação no GitHub Pages
 
-Este projeto usa **React + Vite**. O GitHub Pages não deve publicar a pasta `src` diretamente:
-o workflow deste pacote instala as dependências, executa `npm run build` e publica somente `dist/`.
+Este projeto foi preparado para GitHub Pages usando Vite + React.
 
-## Publicação
+## 1. Repositório
 
-1. Crie/abra o repositório `imoveis` no GitHub.
-2. Envie todos os arquivos deste ZIP para a branch `main`.
-3. Acesse **Settings → Pages**.
-4. Em **Build and deployment**, selecione **GitHub Actions**.
-5. Aguarde o workflow **Deploy to GitHub Pages** terminar.
-
-A aplicação está configurada para o endereço:
+O projeto está configurado para o repositório:
 
 `https://hodcriative.github.io/imoveis/`
 
-O Vite usa `base: "/imoveis/"` e o React Router usa `basename="/imoveis"`, portanto os assets e as rotas funcionam no subdiretório do GitHub Pages.
+Portanto, o `base` do Vite é `/imoveis/`.
+
+Se o nome do seu repositório for diferente, altere `base` em `vite.config.ts` para `/<nome-do-repositorio>/`.
+
+## 2. GitHub Pages
+
+No GitHub, abra:
+
+**Settings → Pages → Build and deployment → Source**
+
+Selecione:
+
+**GitHub Actions**
+
+Não selecione "Deploy from a branch" para este workflow.
+
+## 3. Branch
+
+Faça o push do projeto para a branch `main`.
+
+O workflow `.github/workflows/pages.yml` fará o build e o deploy automaticamente.
+
+## 4. Rotas
+
+O projeto usa `HashRouter`, portanto as rotas são compatíveis com hospedagem estática do GitHub Pages.
+
+Exemplo:
+
+`https://hodcriative.github.io/imoveis/#/`
+
+## 5. Teste local
+
+Execute:
+
+```bash
+npm install
+npm run build
+npm run dev
+```
+
+Se `npm run build` terminar sem erros, a etapa de build está pronta para o GitHub Actions.
